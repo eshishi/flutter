@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>608496532223-ke7vdmej7lu69f043bglgutvn0f8usvg.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.608496532223-ke7vdmej7lu69f043bglgutvn0f8usvg</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAF3GZGxsYfN5eJ5Uw7aHkyhMuHza299YA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>608496532223</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.flutterStudy</string>
+	<key>PROJECT_ID</key>
+	<string>nekoze-9ccfb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nekoze-9ccfb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:608496532223:ios:982c5f5a9f2f9e48b1eaca</string>
+	<key>DATABASE_URL</key>
+	<string>https://nekoze-9ccfb-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
