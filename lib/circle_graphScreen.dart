@@ -51,6 +51,7 @@ class _CircleGraphScreenState extends State<CircleGraphScreen> {
             //下の状態の名前の部分
             legend: Legend(
               isVisible: true,
+              textStyle: TextStyle(),
               title: LegendTitle(
                   text: '今日の状態',
                   textStyle: const TextStyle(

@@ -10,7 +10,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   FirebaseDatabase database = FirebaseDatabase.instance;
-
   DatabaseReference ref = FirebaseDatabase.instance.ref();
 
   var a;
@@ -28,16 +27,18 @@ class _HomeState extends State<Home> {
         child: Center(
           child: ElevatedButton(
             onPressed: () async {
-              final snapshot = await ref.child('gyro/2023-03-15').get();
-              if (snapshot.exists) {
+              final snapshot = await ref
+                  .child('test/-NQcUOvNQPtZmec-M65n/data')
+                  .orderByChild('timestamp')
+                  .limitToLast(1)
+                  .once()
+                  .then((snapshot) {
+                // 最新のデータを含むDataSnapshotが取得されます
                 setState(() {
-                  print(snapshot.value);
-                  a = snapshot.value;
-                  print('$a');
+                  a = snapshot.snapshot.children.first.child('state').value;
                 });
-              } else {
-                print('No data available.');
-              }
+                // 最新のデータを使って何かをします
+              });
             },
             child: Text('$a'),
           ),
