@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/Kam_circle_graphScreen.dart';
 import 'package:flutter_study/home.dart';
 import 'package:flutter_study/my_appbar.dart';
 import '100%graph.dart';

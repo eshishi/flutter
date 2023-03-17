@@ -31,7 +31,7 @@ class _AreaGraphState extends State<AreaGraph> {
               dataSource: _chartData,
               xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
               yValueMapper: (ExpenseData exp, _) => exp.son,
-              name: 'ダメ',
+              name: 'ダメダメ',
               color: HexColor('E86262'),
               markerSettings: const MarkerSettings(
                 isVisible: true,
@@ -40,7 +40,7 @@ class _AreaGraphState extends State<AreaGraph> {
               dataSource: _chartData,
               xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
               yValueMapper: (ExpenseData exp, _) => exp.mother,
-              name: '普通',
+              name: 'ダメ',
               color: HexColor('DAD44A'),
               markerSettings: const MarkerSettings(
                 isVisible: true,
@@ -63,12 +63,13 @@ class _AreaGraphState extends State<AreaGraph> {
 
   List<ExpenseData> getChartData() {
     final List<ExpenseData> chartData = [
-      ExpenseData('3/8', 100, 40, 45),
-      ExpenseData('3/9', 33, 45, 54),
-      ExpenseData('3/10', 43, 23, 20),
-      ExpenseData('3/11', 32, 54, 23),
-      ExpenseData('3/12', 56, 18, 43),
-      ExpenseData('3/13', 23, 54, 33),
+      ExpenseData('3/11', 23, 45, 84),
+      ExpenseData('3/12', 43, 23, 50),
+      ExpenseData('3/13', 32, 54, 43),
+      ExpenseData('3/14', 56, 18, 43),
+      ExpenseData('3/15', 63, 34, 33),
+      ExpenseData('3/16', 73, 34, 23),
+      ExpenseData('3/17', 83, 24, 13),
     ];
     return chartData;
   }
