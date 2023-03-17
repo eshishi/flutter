@@ -15,7 +15,7 @@ class _AreaGraphState extends State<AreaGraph> {
 
   @override
   void initState() {
-    _chartData = getChartData();
+    _chartData = _getChartData();
     _tooltipBehavior = TooltipBehavior(enable: true);
     super.initState();
   }
@@ -27,42 +27,51 @@ class _AreaGraphState extends State<AreaGraph> {
         legend: Legend(isVisible: true),
         tooltipBehavior: _tooltipBehavior,
         series: <ChartSeries>[
-          StackedArea100Series<ExpenseData, String>(
+          _getStackedArea100Series(
               dataSource: _chartData,
               xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
               yValueMapper: (ExpenseData exp, _) => exp.son,
               name: 'ダメダメ',
-              color: HexColor('E86262'),
-              markerSettings: const MarkerSettings(
-                isVisible: true,
-              )),
-          StackedArea100Series<ExpenseData, String>(
+              color: HexColor('E86262')),
+          _getStackedArea100Series(
               dataSource: _chartData,
               xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
               yValueMapper: (ExpenseData exp, _) => exp.mother,
               name: 'ダメ',
-              color: HexColor('DAD44A'),
-              markerSettings: const MarkerSettings(
-                isVisible: true,
-              )),
-          StackedArea100Series<ExpenseData, String>(
+              color: HexColor('DAD44A')),
+          _getStackedArea100Series(
               dataSource: _chartData,
               xValueMapper: (ExpenseData exp, _) => exp.expenseCategory,
               yValueMapper: (ExpenseData exp, _) => exp.father,
               name: '素晴らしい',
               color: HexColor('98E37E'),
-              markerSettings: const MarkerSettings(
-                //点のやつを表示するか
-                isVisible: true,
-              )),
+              markerSettings: const MarkerSettings(isVisible: true)),
         ],
         primaryXAxis: CategoryAxis(),
       ),
     );
   }
 
-  List<ExpenseData> getChartData() {
-    final List<ExpenseData> chartData = [
+  ChartSeries<ExpenseData, String> _getStackedArea100Series({
+    required List<ExpenseData> dataSource,
+    required String Function(ExpenseData, int) xValueMapper,
+    required num Function(ExpenseData, int) yValueMapper,
+    required String name,
+    required Color color,
+    MarkerSettings? markerSettings,
+  }) {
+    return StackedArea100Series<ExpenseData, String>(
+        dataSource: dataSource,
+        xValueMapper: xValueMapper,
+        yValueMapper: yValueMapper,
+        name: name,
+        color: color,
+        markerSettings:
+            markerSettings ?? const MarkerSettings(isVisible: false));
+  }
+
+  List<ExpenseData> _getChartData() {
+    return [
       ExpenseData('3/11', 23, 45, 84),
       ExpenseData('3/12', 43, 23, 50),
       ExpenseData('3/13', 32, 54, 43),
@@ -71,7 +80,6 @@ class _AreaGraphState extends State<AreaGraph> {
       ExpenseData('3/16', 73, 34, 23),
       ExpenseData('3/17', 83, 24, 13),
     ];
-    return chartData;
   }
 }
 

@@ -65,6 +65,7 @@ class _CircleGraphScreenState extends State<CircleGraphScreen> {
       // }
     } catch (e) {
       print(e);
+      print('cirecle');
     }
   }
 
