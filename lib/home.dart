@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    stateNum = 0;
     super.initState();
     ref
         .child('test/-NQcUOvNQPtZmec-M65n/data')
@@ -30,35 +31,35 @@ class _HomeState extends State<Home> {
       }
     });
   }
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   ref
-  //       .child('test/-NQcUOvNQPtZmec-M65n/data')
-  //       .orderByChild('timestamp')
-  //       .limitToLast(1)
-  //       .once()
-  //       .then((snapshot) {
-  //     setState(() {
-  //       stateNum = snapshot.snapshot.children.first.child('state').value;
-  //     });
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('images/R30％.png'),
-            fit: BoxFit.cover,
+      body: Center(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/R30％.png'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Center(
-          child: Text(
-            '$stateNum',
-            style: TextStyle(fontSize: 24),
+          child: Stack(
+            children: [
+              Center(
+                child: Image.asset('images/nekoze_cat_0$stateNum.png'),
+              ),
+              const Positioned(
+                top: 30,
+                right: 120,
+                child: Text(
+                  '現在の状態',
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+              ),
+            ],
           ),
         ),
       ),
