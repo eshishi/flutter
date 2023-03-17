@@ -11,8 +11,39 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   FirebaseDatabase database = FirebaseDatabase.instance;
   DatabaseReference ref = FirebaseDatabase.instance.ref();
+  var stateNum;
 
-  var a;
+  @override
+  void initState() {
+    super.initState();
+    ref
+        .child('test/-NQcUOvNQPtZmec-M65n/data')
+        .orderByChild('timestamp')
+        .limitToLast(1)
+        .onValue
+        .listen((event) {
+      var snapshot = event.snapshot;
+      if (snapshot.value != null) {
+        setState(() {
+          stateNum = snapshot.children.first.child('state').value;
+        });
+      }
+    });
+  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   ref
+  //       .child('test/-NQcUOvNQPtZmec-M65n/data')
+  //       .orderByChild('timestamp')
+  //       .limitToLast(1)
+  //       .once()
+  //       .then((snapshot) {
+  //     setState(() {
+  //       stateNum = snapshot.snapshot.children.first.child('state').value;
+  //     });
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +56,9 @@ class _HomeState extends State<Home> {
           ),
         ),
         child: Center(
-          child: ElevatedButton(
-            onPressed: () async {
-              final snapshot = await ref
-                  .child('test/-NQcUOvNQPtZmec-M65n/data')
-                  .orderByChild('timestamp')
-                  .limitToLast(1)
-                  .once()
-                  .then((snapshot) {
-                // 最新のデータを含むDataSnapshotが取得されます
-                setState(() {
-                  a = snapshot.snapshot.children.first.child('state').value;
-                });
-                // 最新のデータを使って何かをします
-              });
-            },
-            child: Text('$a'),
+          child: Text(
+            '$stateNum',
+            style: TextStyle(fontSize: 24),
           ),
         ),
       ),
