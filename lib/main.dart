@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/stateScreen.dart';
 import 'package:flutter/services.dart';
 
-import 'cirecle_example.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -24,7 +22,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const StateScreen(),
-      // home: const MyHomePage(),
     );
   }
 }

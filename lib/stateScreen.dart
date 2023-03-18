@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/Kam_circle_graphScreen.dart';
 import 'package:flutter_study/home.dart';
 import 'package:flutter_study/my_appbar.dart';
 import '100%graph.dart';
@@ -17,7 +16,7 @@ class _StateScreenState extends State<StateScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     const CircleGraphScreen(),
-    Home(),
+    const Home(),
     const AreaGraph(),
   ];
 

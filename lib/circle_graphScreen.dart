@@ -22,28 +22,28 @@ class _CircleGraphScreenState extends State<CircleGraphScreen> {
   num state0Percent = 0;
   num state1Percent = 0;
   num state2Percent = 0;
-
-  DateTime today = DateTime.now();
+  DateTime now = DateTime.now();
 
   @override
   void initState() {
     try {
       super.initState();
+      var dateOnly = DateTime(now.year, now.month, now.day);
+      // print(now);
+      // print(dateOnly);
+      var nowUnixTime = dateOnly.millisecondsSinceEpoch;
+      // print(nowUnixTime);
       ref
           .child('test/-NQcUOvNQPtZmec-M65n/data')
+          .orderByChild('timestamp')
+          .startAt(nowUnixTime)
           .once()
           .then((DatabaseEvent event) {
         var snapshot = event.snapshot.children.map((e) => e.value).toList();
-        var j = snapshot[0].toString();
-        String timeStr = '';
-        for (int i = 22; i < 35; i++) {
-          timeStr += j[i];
-        }
-        print(timeStr);
-        // print(j[22]);
-        // print(j[34]);
+
         for (var snap in snapshot) {
           var a = snap.toString();
+
           if (a[8] == '0') {
             setState(() {
               state0Count += 1;
@@ -96,9 +96,9 @@ class _CircleGraphScreenState extends State<CircleGraphScreen> {
         // ChartData(HexColor('98E37E'), '素晴らしい  $state0Percent%', state0Count),
         // ChartData(HexColor('EFEB7E'), 'ダメ $state1Percent%', state1Count),
         // ChartData(HexColor('E77C7C'), 'ダメダメ $state2Percent%', state2Count),
-        ChartData(HexColor('98E37E'), '読み込み中...', state0Count),
-        ChartData(HexColor('EFEB7E'), '読み込み中...', state1Count),
-        ChartData(HexColor('E77C7C'), '読み込み中...', state2Count),
+        ChartData(HexColor('98E37E'), '読み込み中...', 0),
+        ChartData(HexColor('EFEB7E'), '読み込み中...', 0),
+        ChartData(HexColor('E77C7C'), '読み込み中...', 0),
       ];
     }
 

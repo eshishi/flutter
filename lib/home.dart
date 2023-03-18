@@ -36,8 +36,8 @@ class _HomeState extends State<Home> {
         }
       });
     } catch (e) {
-      print(e);
-      print('home');
+      debugPrint('$e');
+      // debugPrint('home');
     }
   }
 
