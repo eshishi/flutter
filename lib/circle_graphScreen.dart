@@ -1,4 +1,4 @@
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -19,6 +19,10 @@ class _CircleGraphScreenState extends State<CircleGraphScreen> {
   num state1Count = 0;
   num state2Count = 0;
   num totalValue = 0;
+  num state0Percent = 0;
+  num state1Percent = 0;
+  num state2Percent = 0;
+
   DateTime today = DateTime.now();
 
   @override
@@ -54,6 +58,12 @@ class _CircleGraphScreenState extends State<CircleGraphScreen> {
             });
           }
         }
+        setState(() {
+          totalValue = state0Count + state1Count + state2Count;
+          state0Percent = (state0Count * 100 ~/ totalValue);
+          state1Percent = (state1Count * 100 ~/ totalValue);
+          state2Percent = (state2Count * 100 ~/ totalValue);
+        });
 
         print('State 0 Count: $state0Count');
         print('State 1 Count: $state1Count');
@@ -71,17 +81,32 @@ class _CircleGraphScreenState extends State<CircleGraphScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final List<ChartData> chartData = [
-      ChartData(HexColor('98E37E'), '素晴らしい', state0Count),
-      ChartData(HexColor('EFEB7E'), 'ダメ', state1Count),
-      ChartData(HexColor('E77C7C'), 'ダメダメ', state2Count),
-    ];
+    List<ChartData> chartData;
+    if (totalValue != 0) {
+      chartData = [
+        ChartData(HexColor('98E37E'), '素晴らしい  $state0Percent%', state0Count),
+        ChartData(HexColor('EFEB7E'), 'ダメ $state1Percent%', state1Count),
+        ChartData(HexColor('E77C7C'), 'ダメダメ $state2Percent%', state2Count),
+        // ChartData(HexColor('98E37E'), '素晴らしい  10%', state0Count),
+        // ChartData(HexColor('EFEB7E'), 'ダメ 13%', state1Count),
+        // ChartData(HexColor('E77C7C'), 'ダメダメ 13%', state2Count),
+      ];
+    } else {
+      chartData = [
+        // ChartData(HexColor('98E37E'), '素晴らしい  $state0Percent%', state0Count),
+        // ChartData(HexColor('EFEB7E'), 'ダメ $state1Percent%', state1Count),
+        // ChartData(HexColor('E77C7C'), 'ダメダメ $state2Percent%', state2Count),
+        ChartData(HexColor('98E37E'), '読み込み中...', state0Count),
+        ChartData(HexColor('EFEB7E'), '読み込み中...', state1Count),
+        ChartData(HexColor('E77C7C'), '読み込み中...', state2Count),
+      ];
+    }
 
     // final List<ChartData> chartData = [
     //   ChartData(HexColor('98E37E'), '素晴らしい', 120),
     //   ChartData(HexColor('EFEB7E'), 'ダメ', 25),
     //   ChartData(HexColor('E77C7C'), 'ダメダメ', 37),
-    // ];
+    // ]; 5032
 
     return Scaffold(
       body: Center(

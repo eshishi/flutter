@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
   FirebaseDatabase database = FirebaseDatabase.instance;
   DatabaseReference ref = FirebaseDatabase.instance.ref();
   var stateNum;
-  List<String> stateList = ['素晴らしい', 'ダメ', 'ダメダメ'];
+  List<String> stateList = ['素晴らしい ', 'ダメ', 'ダメダメ'];
   String nowState = '素晴らしい';
 
   @override
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                 height: 300,
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 20,
               left: 100,
               child: Text(
@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
                 child: Text(
                   nowState,
                   style: GoogleFonts.delaGothicOne(
-                      textStyle: Theme.of(context).textTheme.headline4,
+                      textStyle: Theme.of(context).textTheme.headlineMedium,
                       color: Colors.red,
                       fontSize: 56),
                 ),
